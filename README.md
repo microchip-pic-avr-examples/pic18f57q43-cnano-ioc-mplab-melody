@@ -31,7 +31,19 @@
      - PIC18F47Q10 Curiosity Nano [(DM182029)](https://www.microchip.com/Developmenttools/ProductDetails/DM182029)
      - Curiosity Nano Base for Click boards™ [(AC164162)](https://www.microchip.com/Developmenttools/ProductDetails/AC164162)
      - POT Click board™ [(MIKROE-3402)](https://www.mikroe.com/pot-click) -->
+- [Microchip PIC18F57Q43 Curiosity Nano Evaluation Kit](https://www.microchip.com/developmenttools/ProductDetails/DM164150)
+- [MikroElektronika - POT 3 click](https://www.mikroe.com/pot-3-click)
+- [Microchiop Curiosity Nano Base for Click boards](https://www.microchip.com/developmenttools/ProductDetails/AC164162)
 
+### Hardware User Guide
+
+In this project we will read the analog signal from the potentiometer and send it to the PC.
+
+
+To be able to read the value we would have to configure the Analog Digital Converter (ADC) to read the value from the correct pin.  
+When using the *Curiosity Nano Adapter* with the *POT 3 click* in space **1** we can read that Analog 1 - AN1 is connected to PORTA - RA0 on the **PIC18F57Q43**
+  
+![Nano Adapter](images/nano_adapter.jpg)
 ## Setup
 
 <!-- Explain how to connect hardware and set up software. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
