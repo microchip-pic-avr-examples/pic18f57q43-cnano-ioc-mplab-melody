@@ -32,7 +32,6 @@
      - Curiosity Nano Base for Click boards™ [(AC164162)](https://www.microchip.com/Developmenttools/ProductDetails/AC164162)
      - POT Click board™ [(MIKROE-3402)](https://www.mikroe.com/pot-click) -->
 - [Microchip PIC18F57Q43 Curiosity Nano Evaluation Kit](https://www.microchip.com/developmenttools/ProductDetails/DM164150)
-- [MikroElektronika - POT 3 click](https://www.mikroe.com/pot-3-click)
 - [Microchiop Curiosity Nano Base for Click boards](https://www.microchip.com/developmenttools/ProductDetails/AC164162)
 
 ### Hardware User Guide
@@ -47,6 +46,50 @@ When using the *Curiosity Nano Adapter* with the *POT 3 click* in space **1** we
 ## Setup
 
 <!-- Explain how to connect hardware and set up software. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
+MCC with the Melody library was used to implement this example as shown in the following section.
+## Clock Control Configuration
+In the *Project Resources* window click Clock Control. 
+
+![MCC - Clock Control](images/ioc_clock_control.png)
+
+A window on the right side of the MPLAB-IDE will appear called Clock Control Easy View use the Dropdown boxes to select HFINTOSC, 4MHz, and devide by 4.
+
+![MCC - Clock Control Easy View](images/ioc_clock_control_easy_view.png)
+
+## Pin Configuration
+In the *Pins Grid View* find ANx for the input pin to the ADC module. AN1 coming from the Click 1 postition is connected to RA0. selected as an output by clicking the corresponding padlock symbol.
+
+**Pins Grid View**
+![MCC - UART3 connections](images/IOC_Pin_grid_view.png)
+
+## Pin Control Configuration
+In the *Project Resources* window click Pins. 
+
+![MCC - Clock Control](images/IOC_Pins.png)
+
+
+A window on the right side of the MPLAB-IDE will appear called pins slide the bar on the left side to view more of the window. 
+De-select analog. 
+
+![MCC - De-select analog](images/IOC_deselect_analog.png)
+
+Rename RB4 to SW0 and RF3 to LED0. Start high for LED0 so it doesn't light till the interrupt. 
+![MCC - Rename inputs and outputs start high for LED0 and Negative edge IOC select](images/IOC_sw0_led0_start_high_led0.png)
+## IOC Configuration
+Choose from dropdown arrow Negative Edge for IOC.
+![MCC - Negative edge IOC select](images/ioc_negative_edge_selection.png)
+
+In the *Project Resources* window click Generate.
+![MCC - Negative edge IOC select](images/IOC_click_generate.png)
+
+Next, copy the global interrupt enable from the interrupt.h file so I can use it in the main.c.
+![MCC - Negative edge IOC select](images/ioc_interrupt_enable_copy.png)
+
+Paste into the Main.c after SYSTEM_Initialize();
+![MCC - paste interrupt enble code into main](images/ioc_interrupt_enable.png)
+
+Add code to the Interrupt handler in pins.c.
+![MCC - paste interrupt enble code into main](images/ioc_interrupt_enable.png)
 
 ## Operation
 
