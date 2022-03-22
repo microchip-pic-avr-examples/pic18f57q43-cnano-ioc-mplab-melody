@@ -36,13 +36,13 @@
 
 ### Hardware User Guide
 
-In this project we will read the analog signal from the potentiometer and send it to the PC.
+This example code will show how to setup the microcontroller to interrupt when it sees a change on the specified pin. RF3 will be the indicator for the interrupt and RB4 for the SW0 on the Curiosity nano to change the state of the pin.
 
 
-To be able to read the value we would have to configure the Analog Digital Converter (ADC) to read the value from the correct pin.  
-When using the *Curiosity Nano Adapter* with the *POT 3 click* in space **1** we can read that Analog 1 - AN1 is connected to PORTA - RA0 on the **PIC18F57Q43**
+To be able to read the value we would have to configure the Pin for interrupt on change and using a negative edge since SW0 is active low.  
+
   
-![Nano Adapter](images/nano_adapter.jpg)
+<img src="images/gpio_setup.png" width="600"/></a>
 ## Setup
 
 <!-- Explain how to connect hardware and set up software. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
@@ -50,51 +50,70 @@ MCC with the Melody library was used to implement this example as shown in the f
 ## Clock Control Configuration
 In the *Project Resources* window click Clock Control. 
 
-![MCC - Clock Control](images/ioc_clock_control.png)
+![Melody - Clock Control](images/ioc_clock_control.png)
 
-A window on the right side of the MPLAB-IDE will appear called Clock Control Easy View use the Dropdown boxes to select HFINTOSC, 4MHz, and devide by 4.
+A window on the right side of the MPLAB-IDE will appear called *Clock Control Easy View* use the Dropdown boxes to select HFINTOSC, 4MHz, and devide by 4.
 
-![MCC - Clock Control Easy View](images/ioc_clock_control_easy_view.png)
+![Melody - Clock Control Easy View](images/ioc_clock_control_easy_view.png)
 
 ## Pin Configuration
 In the *Pins Grid View* find ANx for the input pin to the ADC module. AN1 coming from the Click 1 postition is connected to RA0. selected as an output by clicking the corresponding padlock symbol.
 
 **Pins Grid View**
-![MCC - UART3 connections](images/IOC_Pin_grid_view.png)
+![Melody - SW0 and LED0 connections](images/IOC_Pin_grid_view.png)
 
 ## Pin Control Configuration
 In the *Project Resources* window click Pins. 
 
-![MCC - Clock Control](images/IOC_Pins.png)
-
+![Melody - ](images/IOC_Pins.png)
 
 A window on the right side of the MPLAB-IDE will appear called pins slide the bar on the left side to view more of the window. 
 De-select analog. 
 
-![MCC - De-select analog](images/IOC_deselect_analog.png)
+![Melody - De-select analog](images/IOC_deselect_analog.png)
 
 Rename RB4 to SW0 and RF3 to LED0. Start high for LED0 so it doesn't light till the interrupt. 
-![MCC - Rename inputs and outputs start high for LED0 and Negative edge IOC select](images/IOC_sw0_led0_start_high_led0.png)
+![Melody - Rename inputs and outputs start high for LED0 and Negative edge IOC select](images/IOC_sw0_led0_start_high_led0.png)
 ## IOC Configuration
 Choose from dropdown arrow Negative Edge for IOC.
-![MCC - Negative edge IOC select](images/ioc_negative_edge_selection.png)
+![Melody - Negative edge IOC select](images/ioc_negative_edge_selection.png)
 
 In the *Project Resources* window click Generate.
-![MCC - Negative edge IOC select](images/IOC_click_generate.png)
+![Melody - Negative edge IOC select](images/IOC_click_generate.png)
 
-Next, copy the global interrupt enable from the interrupt.h file so I can use it in the main.c.
-![MCC - Negative edge IOC select](images/ioc_interrupt_enable_copy.png)
+Next, copy the global interrupt enable from the interrupt.h file so it can use it in the main.c.
+![Melody - Negative edge IOC select](images/ioc_interrupt_enable_copy.png)
 
-Paste into the Main.c after SYSTEM_Initialize();
-![MCC - paste interrupt enble code into main](images/ioc_interrupt_enable.png)
+Add code to Light LED0 when the interrupt happens. Open pins.c in the source files. The code will go in the method called RB4_DefaultInterruptHandler() where it says add code here type LED0_SetLow(); as shown below
+![Melody - add Code to light LED0 when Interrupt occurs](images/ioc_interrupt_code.png)
 
-Add code to the Interrupt handler in pins.c.
-![MCC - paste interrupt enble code into main](images/ioc_interrupt_enable.png)
+Then we will want to open Main.c to add code to do two things enable global interrupts and to reset the led when the SW0 goes to its default state.
+Paste INTERRUPT_GlobalInterruptEnable(); into the Main.c after SYSTEM_Initialize();
+![Melody - paste interrupt enble code into main](images/IOC_main_code_to_reset_led0_white.png)
 
+Click Clean and Build button.
+
+![Melody - clean and build](images/ioc_click_clean_and_build.png)
+
+Success!!
+
+![Melody - build successful](images/IOC_build_successful.png)
+
+Click Program Device button.
+
+![Melody - click program](images/ioc_click_program.png)
+
+Success!!
+
+![Melody - program successful](images/ioc_program_successful.png)
 ## Operation
 
 <!-- Explain how to operate the example. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
+Push SW0 and see if the LED0 lights for 2 seconds and then shuts off till the next interrupt.
+
+<img src="images/ioc_nano_demo.gif" width="600"/></a>
 
 ## Summary
 
 <!-- Summarize what the example has shown -->
+The example has shown how Melody can be used to easily configure a pin, using the Interrupt on Change feature of the GPIO module module of the PIC18F57Q43 device. 
