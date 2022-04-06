@@ -20,11 +20,11 @@
         ],
         "dfp": {
             "name": "PIC18F-Q_DFP",
-            "semverRange": "1.13.211"
+            "semverRange": "^1.13.211"
         },
         "configurator": {
             "name": "MCC",
-            "semverRange": "2.0.46"
+            "semverRange": ">=5.1.0"
         },
         "device": {
             "metaDataVersion": "1.0.0",
