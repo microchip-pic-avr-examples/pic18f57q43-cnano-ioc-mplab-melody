@@ -72,23 +72,34 @@ De-select the "Analog" checkbox on all pins in this window to disable analog fun
 
 Use the "Custom Name" field to rename pin "RB4" to "SW0" and "RF3" to "LED0". 
 Select the "Start High" option for pin RF3 (LED0), so that the LED does not light up until the button has been pushed.
+
 ![Melody - Rename inputs and outputs start high for LED0 and Negative edge IOC select](images/ioc_sw0_led0_start_high_led0.png)
+
 ## IOC Configuration
 Choose from dropdown arrow Negative Edge for IOC.
+
 ![Melody - Negative edge IOC select](images/ioc_negative_edge_selection.png)
 
 In the *Project Resources* window click the "Generate" button.
+
 ![Melody - Negative edge IOC select](images/ioc_click_generate.png)
 
 Next, copy the global interrupt enable from the interrupt.h file so it can use it in the main.c.
+
 ![Melody - Negative edge IOC select](images/ioc_interrupt_enable_copy.png)
 
 Add code to Light LED0 when the interrupt happens. Open pins.c in the source files. The code will go in the method called RB4_DefaultInterruptHandler() where it says add code here type LED0_SetLow(); as shown below
+
 ![Melody - add Code to light LED0 when Interrupt occurs](images/ioc_interrupt_code.png)
 
 The next step we want to open main.c to add code to do two things enable global interrupts and to reset the led when the SW0 goes to its default state.
 Paste INTERRUPT_GlobalInterruptEnable(); into the main.c after SYSTEM_Initialize();
 Copy the code shown below into the main loop.
+
+
+        __delay_ms(2000);
+        LED0_SetHigh(); //turn off LED0 to wait for next interrupt
+
 
 ![Melody - paste interrupt enble code into main](images/ioc_main_code_to_reset_led0_white.png)
 
