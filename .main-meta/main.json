@@ -4,8 +4,8 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu8.mplabx.project.pic18f57q43-cnano-ioc-mplab-melody",
-        "version": " ",
-        "displayName": "",
+        "version": "1.0.0",
+        "displayName": "Interrupt on Change feature of the GPIO on PIC18F57Q43 Microcontroller",
         "projectName": "pic18f57q43-cnano-ioc-mplab-melody",
         "shortDescription": "This code example demonstrates how to use the Interrupt on change feature of the GPIO module This code example was created for a Microchip University Class with the name GPIO",
         "ide": {

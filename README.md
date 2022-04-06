@@ -4,82 +4,81 @@
 
 # Interrupt On Change feature of GPIO
 
-<!-- This is where the introduction to the example goes, including mentioning the peripherals used -->
+This code example demonstrates how to use the Interrupt on change feature of the GPIO module. This code example was created for a Microchip University Class with the name GPIO
 
 ## Related Documentation
 
-<!-- Any information about an application note or tech brief can be linked here. Use unbreakable links!
-     In addition a link to the device family landing page and relevant peripheral pages as well:
-     - [AN3381 - Brushless DC Fan Speed Control Using Temperature Input and Tachometer Feedback](https://microchip.com/00003381/)
-     - [PIC18F-Q10 Family Product Page](https://www.microchip.com/design-centers/8-bit/pic-mcus/device-selection/pic18f-q10-product-family) -->
-
+- [MPLAB Code Configurator](https://www.microchip.com/en-us/development-tools-tools-and-software/embedded-software-center/mplab-code-configurator)
+- [PIC18-Q43 Family Product Page](https://www.microchip.com/en-us/products/microcontrollers-and-microprocessors/8-bit-mcus/pic-mcus/pic18-q43)
 ## Software Used
-
-<!-- All software used in this example must be listed here. Use unbreakable links!
-     - MPLAB® X IDE 5.30 or newer [(microchip.com/mplab/mplab-x-ide)](http://www.microchip.com/mplab/mplab-x-ide)
-     - MPLAB® XC8 2.10 or a newer compiler [(microchip.com/mplab/compilers)](http://www.microchip.com/mplab/compilers)
-     - MPLAB® Code Configurator (MCC) 3.95.0 or newer [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
-     - MPLAB® Code Configurator (MCC) Device Libraries PIC10 / PIC12 / PIC16 / PIC18 MCUs [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
-     - Microchip PIC18F-Q Series Device Support (1.4.109) or newer [(packs.download.microchip.com/)](https://packs.download.microchip.com/) -->
 
 - MPLAB® X IDE 6.0.0 or newer [(MPLAB® X IDE 6.0)](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_MPAE_Examples&utm_content=pic18f57q43-cnano-ioc-mplab-melody-github)
 - MPLAB® XC8 2.35.0 or newer compiler [(MPLAB® XC8 2.35)](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_MPAE_Examples&utm_content=pic18f57q43-cnano-ioc-mplab-melody-github)
+- MPLAB® Code Configurator (MCC) 5.1.0 or newer [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
+- MPLAB® Code Configurator (MCC) Melody 2.0.46 or newer [(microchip.com/en-us/tools-resources/configure/mplab-code-configurator/melody)](https://www.microchip.com/en-us/tools-resources/configure/mplab-code-configurator/melody)
+- Microchip PIC18F-Q Series Device Support (1.13.211) or newer [(packs.download.microchip.com/)](https://packs.download.microchip.com/)
 
 ## Hardware Used
 
-<!-- All hardware used in this example must be listed here. Use unbreakable links!
-     - PIC18F47Q10 Curiosity Nano [(DM182029)](https://www.microchip.com/Developmenttools/ProductDetails/DM182029)
-     - Curiosity Nano Base for Click boards™ [(AC164162)](https://www.microchip.com/Developmenttools/ProductDetails/AC164162)
-     - POT Click board™ [(MIKROE-3402)](https://www.mikroe.com/pot-click) -->
 - [Microchip PIC18F57Q43 Curiosity Nano Evaluation Kit](https://www.microchip.com/developmenttools/ProductDetails/DM164150)
 - [Microchiop Curiosity Nano Base for Click boards](https://www.microchip.com/developmenttools/ProductDetails/AC164162)
+- [Breadboard](https://www.mouser.com/ProductDetail/426-FIT0008)
+- [Switches](https://www.mouser.com/ProductDetail/506-FSM2JRT)
+- [LED](https://www.mouser.com/ProductDetail/941-C5SMFRJECT0W0BB2)
+- [Resistor](https://www.mouser.com/ProductDetail/603-CFR-25JB-52-330R)
+- [Wire Kit](https://www.mouser.com/ProductDetail/424-WIRE-KIT)
 
 ### Hardware User Guide
 
 This example code will show how to setup the microcontroller to interrupt when it sees a change on the specified pin. RF3 will be the indicator for the interrupt and RB4 for the SW0 on the Curiosity nano to change the state of the pin.
 
 
-To be able to read the value we would have to configure the Pin for interrupt on change and using a negative edge since SW0 is active low.  
+To be able to read the value we would have to configure the Pin for interrupt on change and using a negative edge since SW0 is active low. The image below is the total setup needed for all the code examples for the GPIO Class the only one needed for this example is the PIC18F57Q43 Curiosity nano. 
 
   
 <img src="images/gpio_setup.png" width="600"/></a>
 ## Setup
 
-<!-- Explain how to connect hardware and set up software. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
+Attach the PIC18F57Q43 Curiosity nano to the Curiosity Nano adapter board with supplied pins. 
+Place the Switches in the bread board. Connect one to AN2 and the other to AN3 on the Curiosity nano Adapter board. Connect the other pins of both switches to a Ground on the Curiosity nano adapter board.
+You have a few choices to connect the LED and Resistor.  Solder the LED in series with the resistor and connect to PWM3 on the Curiosity nano adapter and the other to GND be sure to get the polarity of the LED correct, anode to the pin and the cathode towards GND. The second option is to place them into the breadboard and connect them in series with wires to the Curiosity nano adapter.
+Connect the Curiosity nano to the PC. 
+
 MCC with the Melody library was used to implement this example as shown in the following section.
 ## Clock Control Configuration
 In the *Project Resources* window click Clock Control. 
 
 ![Melody - Clock Control](images/ioc_clock_control.png)
 
-A window on the right side of the MPLAB-IDE will appear called *Clock Control Easy View* use the Dropdown boxes to select HFINTOSC, 4MHz, and devide by 4.
+After selecting the "Clock Control" option, a window on the right side of the MPLAB-IDE will appear called *Clock Control Easy View*. Use the Dropdown boxes to select HFINTOSC, 4MHz, and divide by 4 as shown in the figure below.
 
 ![Melody - Clock Control Easy View](images/ioc_clock_control_easy_view.png)
 
 ## Pin Configuration
-In the *Pins Grid View* find ANx for the input pin to the ADC module. AN1 coming from the Click 1 postition is connected to RA0. selected as an output by clicking the corresponding padlock symbol.
+In the *Pins Grid View* find "RB4" for the input pin "SW0" select and "RF3" for the indicator "LED0" output. Select these pins by clicking the corresponding padlock symbol as shown in the figure below.
 
 **Pins Grid View**
-![Melody - SW0 and LED0 connections](images/IOC_Pin_grid_view.png)
+![Melody - SW0 and LED0 connections](images/ioc_pin_grid_view.png)
 
 ## Pin Control Configuration
-In the *Project Resources* window click Pins. 
+In the *Project Resources* window selecting the "Pins" option.
 
-![Melody - ](images/IOC_Pins.png)
+![Melody - ](images/ioc_pins.png)
 
-A window on the right side of the MPLAB-IDE will appear called pins slide the bar on the left side to view more of the window. 
-De-select analog. 
+After selecting the "Pins" option, a window on the right side of the MPLAB-IDE will appear called "Pins". Slide the bar on the left side to view more of the window.
+De-select the "Analog" checkbox on all pins in this window to disable analog functionality, which is not needed for this example. 
 
-![Melody - De-select analog](images/IOC_deselect_analog.png)
+![Melody - De-select analog](images/ioc_deselect_analog.png)
 
-Rename RB4 to SW0 and RF3 to LED0. Start high for LED0 so it doesn't light till the interrupt. 
-![Melody - Rename inputs and outputs start high for LED0 and Negative edge IOC select](images/IOC_sw0_led0_start_high_led0.png)
+Use the "Custom Name" field to rename pin "RB4" to "SW0" and "RF3" to "LED0". 
+Select the "Start High" option for pin RF3 (LED0), so that the LED does not light up until the button has been pushed.
+![Melody - Rename inputs and outputs start high for LED0 and Negative edge IOC select](images/ioc_sw0_led0_start_high_led0.png)
 ## IOC Configuration
 Choose from dropdown arrow Negative Edge for IOC.
 ![Melody - Negative edge IOC select](images/ioc_negative_edge_selection.png)
 
-In the *Project Resources* window click Generate.
-![Melody - Negative edge IOC select](images/IOC_click_generate.png)
+In the *Project Resources* window click the "Generate" button.
+![Melody - Negative edge IOC select](images/ioc_click_generate.png)
 
 Next, copy the global interrupt enable from the interrupt.h file so it can use it in the main.c.
 ![Melody - Negative edge IOC select](images/ioc_interrupt_enable_copy.png)
@@ -87,33 +86,33 @@ Next, copy the global interrupt enable from the interrupt.h file so it can use i
 Add code to Light LED0 when the interrupt happens. Open pins.c in the source files. The code will go in the method called RB4_DefaultInterruptHandler() where it says add code here type LED0_SetLow(); as shown below
 ![Melody - add Code to light LED0 when Interrupt occurs](images/ioc_interrupt_code.png)
 
-Then we will want to open Main.c to add code to do two things enable global interrupts and to reset the led when the SW0 goes to its default state.
-Paste INTERRUPT_GlobalInterruptEnable(); into the Main.c after SYSTEM_Initialize();
-![Melody - paste interrupt enble code into main](images/IOC_main_code_to_reset_led0_white.png)
+The next step we want to open main.c to add code to do two things enable global interrupts and to reset the led when the SW0 goes to its default state.
+Paste INTERRUPT_GlobalInterruptEnable(); into the main.c after SYSTEM_Initialize();
+Copy the code shown below into the main loop.
 
-Click Clean and Build button.
+![Melody - paste interrupt enble code into main](images/ioc_main_code_to_reset_led0_white.png)
+
+Click the "Clean and Build" button once the routine has been copied into the main loop.
 
 ![Melody - clean and build](images/ioc_click_clean_and_build.png)
 
-Success!!
+Once the project has been successfully built the output window should show the following message:
 
-![Melody - build successful](images/IOC_build_successful.png)
+![Melody - build successful](images/ioc_build_successful.png)
 
-Click Program Device button.
+Click the "Program Device" button.
 
 ![Melody - click program](images/ioc_click_program.png)
 
-Success!!
+Once the device has been successfully programmed, the output window should show the following message:
 
 ![Melody - program successful](images/ioc_program_successful.png)
 ## Operation
 
-<!-- Explain how to operate the example. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
 Push SW0 and see if the LED0 lights for 2 seconds and then shuts off till the next interrupt.
 
 <img src="images/ioc_nano_demo.gif" width="600"/></a>
 
 ## Summary
 
-<!-- Summarize what the example has shown -->
 The example has shown how Melody can be used to easily configure a pin, using the Interrupt on Change feature of the GPIO module module of the PIC18F57Q43 device. 
