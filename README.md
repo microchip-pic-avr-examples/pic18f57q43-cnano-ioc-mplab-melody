@@ -58,6 +58,7 @@ After selecting the "Clock Control" option, a window on the right side of the MP
 In the *Pins Grid View* find "RB4" for the input pin "SW0" select and "RF3" for the indicator "LED0" output. Select these pins by clicking the corresponding padlock symbol as shown in the figure below.
 
 **Pins Grid View**
+
 ![Melody - SW0 and LED0 connections](images/ioc_pin_grid_view.png)
 
 ## Pin Control Configuration
