@@ -95,7 +95,7 @@ Add code to Light LED0 when the interrupt happens. Open pins.c in the source fil
 
 The next step we want to open main.c to add code to do two things enable global interrupts and to reset the led when the SW0 goes to its default state.
 Paste INTERRUPT_GlobalInterruptEnable(); into the main.c after SYSTEM_Initialize();
-Copy the code shown below into the main loop.
+In addition to this, also copy the code snippet shown below into the main while(1) loop.
 
 
         __delay_ms(2000);
