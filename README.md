@@ -42,7 +42,7 @@ To be able to read the value we would have to configure the Pin for interrupt on
 Attach the PIC18F57Q43 Curiosity nano to the Curiosity Nano adapter board with supplied pins. 
 Place the Switches in the bread board. Connect one to AN2 and the other to AN3 on the Curiosity nano Adapter board. Connect the other pins of both switches to a Ground on the Curiosity nano adapter board.
 You have a few choices to connect the LED and Resistor.  Solder the LED in series with the resistor and connect to PWM3 on the Curiosity nano adapter and the other to GND be sure to get the polarity of the LED correct, anode to the pin and the cathode towards GND. The second option is to place them into the breadboard and connect them in series with wires to the Curiosity nano adapter.
-Connect the Curiosity nano to the PC. 
+Once this hardware setup has been completed, connect the Curiosity Nano to the PC.
 
 MCC with the Melody library was used to implement this example as shown in the following section.
 ## Clock Control Configuration
