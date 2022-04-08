@@ -33,7 +33,7 @@ This code example demonstrates how to use the Interrupt on change feature of the
 This example code will show how to setup the microcontroller to interrupt when it sees a change on the specified pin. RF3 will be the indicator for the interrupt and RB4 for the SW0 on the Curiosity nano to change the state of the pin.
 
 
-To be able to read the value we would have to configure the Pin for interrupt on change and using a negative edge since SW0 is active low. The image below is the total setup needed for all the code examples for the GPIO Class the only one needed for this example is the PIC18F57Q43 Curiosity nano. 
+In order to configure pin RB4 to generate an interrupt when its state changes, the GPIO must be programmed to enable Interrupt-on-change. Additionally, pin RB4 should be configured such that an Interrupt-on-change is triggered on a negative edge since SW0 is active-low. The image below shows the complete hardware setup needed for all the code examples for the GPIO Class. The only component needed for this code example is the PIC18F57Q43 Curiosity Nano. 
 
   
 <img src="images/gpio_setup.png" width="600"/></a>
