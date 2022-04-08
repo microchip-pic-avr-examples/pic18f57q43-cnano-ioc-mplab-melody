@@ -39,7 +39,7 @@ To be able to read the value we would have to configure the Pin for interrupt on
 <img src="images/gpio_setup.png" width="600"/></a>
 ## Setup
 
-Attach the PIC18F57Q43 Curiosity nano to the Curiosity Nano adapter board with supplied pins. 
+Attach the PIC18F57Q43 Curiosity Nano to the Curiosity Nano Adapter Board with supplied pins. 
 Place the switches in the bread board as shown in the hardware setup figure. Connect one switch to the pin labeled AN2 and the other switch to the pin labeled AN3 on the Curiosity Nano Adapter board. Connect the other pins of both switches to a ground on the Curiosity Nano Adapter board.
 There are a few different ways to connect the LED and resistor. The first option is to solder the LED in series with the resistor, and connect it to the input labeled as PWM3 on the Curiosity Nano adapter. The other end should be connected to ground in this option. It is important to ensure the polarity of the LED is correct (anode to the pin and the cathode towards ground). The second option is to place them into the breadboard and connect them in series similar to option one but with jumper wires going to the Curiosity Nano adapter. 
 Once this hardware setup has been completed, connect the Curiosity Nano to the PC.
