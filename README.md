@@ -77,7 +77,7 @@ Select the "Start High" option for pin RF3 (LED0), so that the LED does not ligh
 ![Melody - Rename inputs and outputs start high for LED0 and Negative edge IOC select](images/ioc_sw0_led0_start_high_led0.png)
 
 ## IOC Configuration
-Choose from dropdown arrow Negative Edge for IOC.
+In the "Pins" configuration window, open the dropdown menu to select from the Interrupt-on-Change options, and choose "Negative" to enable Interrupt-on-Change on a negative edge for this pin.
 
 ![Melody - Negative edge IOC select](images/ioc_negative_edge_selection.png)
 
