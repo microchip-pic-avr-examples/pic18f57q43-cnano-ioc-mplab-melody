@@ -46,7 +46,7 @@ Connect the Curiosity nano to the PC.
 
 MCC with the Melody library was used to implement this example as shown in the following section.
 ## Clock Control Configuration
-In the *Project Resources* window click Clock Control. 
+In the *Project Resources* window select "Clock Control" as shown in the figure below.
 
 ![Melody - Clock Control](images/ioc_clock_control.png)
 
