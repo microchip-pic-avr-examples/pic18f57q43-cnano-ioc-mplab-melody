@@ -102,7 +102,8 @@ In addition to this, also copy the code snippet shown below into the main while(
         __delay_ms(2000);
         LED0_SetHigh(); //turn off LED0 to wait for next interrupt
 
-The main.c file should look this this after completing these steps: 
+The main.c file should look this this after completing these steps:
+ 
 ![Melody - paste interrupt enble code into main](images/ioc_main_code_to_reset_led0_white.png)
 
 Click the "Clean and Build" button once the routine has been copied into the main loop.
