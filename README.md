@@ -121,7 +121,7 @@ Once the device has been successfully programmed, the output window should show 
 ![Melody - program successful](images/ioc_program_successful.png)
 ## Operation
 
-Push SW0 and see if the LED0 lights for 2 seconds and then shuts off till the next interrupt.
+To operate this demo, press the pushbutton named SW0. LED0 should light up for 2 seconds indicating that an interrupt-on-change has occurred (negative edge has been detected) and then the LED should shut off until a negative edge is detected on this pin again. .
 
 <img src="images/ioc_nano_demo.gif" width="600"/></a>
 
