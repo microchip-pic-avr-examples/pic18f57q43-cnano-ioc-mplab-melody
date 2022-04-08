@@ -92,7 +92,7 @@ Add code to Light LED0 when the interrupt happens. Open pins.c in the source fil
 
 ![Melody - add Code to light LED0 when Interrupt occurs](images/ioc_interrupt_code.png)
 
-The next step we want to open main.c to add code to do two things enable global interrupts and to reset the led when the SW0 goes to its default state.
+The next step is to open the main.c source file and to add code to do two things; enable global interrupts and to reset the LED when SW0 goes into its default state.
 Copy the function called INTERRUPT_GlobalInterruptEnable(); and paste it into the main.c after SYSTEM_Initialize();
 
 ![Melody - Negative edge IOC select](images/ioc_interrupt_enable_copy.png)
