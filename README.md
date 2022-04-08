@@ -87,7 +87,6 @@ In the *Project Resources* window click the "Generate" button.
 
 Next, copy the global interrupt enable from the interrupt.h file so it can use it in the main.c.
 
-![Melody - Negative edge IOC select](images/ioc_interrupt_enable_copy.png)
 
 Add code to Light LED0 when the interrupt happens. Open pins.c in the source files. The code will go in the method called RB4_DefaultInterruptHandler() where it says add code here type LED0_SetLow(); as shown below
 
