@@ -30,7 +30,7 @@ This code example demonstrates how to use the Interrupt on change feature of the
 
 ### Hardware User Guide
 
-This example code will show how to setup the PIC18F57Q43 microcontroller to trigger an interrupt when a change on a specified pin is detected (Interrupt-on-Change). Pin RF3 of the PIC18F57Q43 will used to indicate when the interrupt has occurred, and pin RB4 will be configured to use the Interrupt-on-Change feature to detect when the state of SW0 on the Curiosity Nano  has changed.
+This example code will show how to setup the PIC18F57Q43 microcontroller to trigger an interrupt when a change on a specified pin is detected (Interrupt-on-Change). Pin RF3 of the PIC18F57Q43 will be used to indicate when the interrupt has occurred, and pin RB4 will be configured to use the Interrupt-on-Change feature to detect when the state of SW0 on the Curiosity Nano  has changed.
 
 
 In order to configure pin RB4 to generate an interrupt when its state changes, the GPIO must be programmed to enable Interrupt-on-change. Additionally, pin RB4 should be configured such that an Interrupt-on-change is triggered on a negative edge since SW0 is active-low. The image below shows the complete hardware setup needed for all the code examples for the GPIO Class. The only component needed for this code example is the PIC18F57Q43 Curiosity Nano. 
@@ -87,7 +87,7 @@ In the *Project Resources* window click the "Generate" button.
 
 
 
-Add the following code snippet to the Interrupt-on-Change interrupt handler for pin RB4 in order to Light LED0 when the interrupt occurs. To do this, open the pins.c source file. The code will go in the function called RB4_DefaultInterruptHandler() right after the commented line that says "add your RB4 interrupt custom code". Inset the function called *LED0_SetLow();* as shown below.
+Add the following code snippet to the Interrupt-on-Change interrupt handler for pin RB4 in order to Light LED0 when the interrupt occurs. To do this, open the pins.c source file. This code snippet will go in the function called RB4_DefaultInterruptHandler() right after the commented line that says "add your RB4 interrupt custom code". Insert the function called *LED0_SetLow();* as shown below.
 
 ![Melody - add Code to light LED0 when Interrupt occurs](images/ioc_interrupt_code.png)
 
@@ -123,7 +123,7 @@ Once the device has been successfully programmed, the output window should show 
 ![Melody - program successful](images/ioc_program_successful.png)
 ## Operation
 
-To operate this demo, press the pushbutton named SW0. LED0 should light up for 2 seconds indicating that an interrupt-on-change has occurred (negative edge has been detected) and then the LED should shut off until a negative edge is detected on this pin again. .
+To operate this demo, press the pushbutton named SW0. LED0 should light up for 2 seconds indicating that an interrupt-on-change has occurred (negative edge has been detected) and then the LED should shut off until a negative edge is detected on this pin again.
 
 <img src="images/ioc_nano_demo.gif" width="600"/></a>
 
